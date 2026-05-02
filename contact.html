@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak | Liks Mobile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      .contact-section {
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+      .contact-details p {
+        margin: 0.5rem 0;
+      }
+      .contact-details a {
+        color: #7db9e8;
+        text-decoration: none;
+      }
+      .contact-details a:hover {
+        text-decoration: underline;
+      }
+      form {
+        max-width: 500px;
+        margin: 2rem auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      input, textarea {
+        padding: 0.75rem;
+        border-radius: 4px;
+        border: none;
+      }
+      input[type="submit"] {
+        background-color: #ffffff;
+        color: #0A2647;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="images/liks_logo_simple.png" alt="Liks Mobile Logo">
+        <span>Liks Mobile</span>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="catalog.html">Katalog</a>
+        <a href="about.html">Tentang</a>
+        <a href="contact.html">Kontak</a>
+      </nav>
+    </header>
+    <section class="contact-section">
+      <h2>Hubungi Kami</h2>
+      <div class="contact-details">
+        <p>WhatsApp: <a href="https://wa.me/6281234567890">+62&nbsp;812‑3456‑7890</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/liksmobile">@liksmobile</a></p>
+        <p>Email: <a href="mailto:info@liksmobile.com">info@liksmobile.com</a></p>
+      </div>
+      <p>Atau kirim pesan langsung melalui formulir di bawah ini:</p>
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Nama Anda" required>
+        <input type="email" name="email" placeholder="Email Anda" required>
+        <textarea name="message" rows="5" placeholder="Pesan" required></textarea>
+        <input type="submit" value="Kirim Pesan">
+      </form>
+    </section>
+    <footer>
+      &copy; 2026 Liks Mobile. Semua hak dilindungi.
+    </footer>
+  </body>
+</html>

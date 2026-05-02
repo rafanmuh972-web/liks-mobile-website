@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog iPhone | Liks Mobile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      .catalog {
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+      .products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
+      .product-card {
+        background-color: #001f3f;
+        border-radius: 8px;
+        padding: 1.5rem;
+        max-width: 280px;
+        text-align: center;
+      }
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
+        background-color: #162b51;
+      }
+      .product-card h3 {
+        margin-top: 0.8rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+      }
+      .product-card p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+      }
+      .product-card .price {
+        font-weight: bold;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+      .product-card a {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: #ffffff;
+        color: #0A2647;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .product-card a:hover {
+        background-color: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="images/liks_logo_simple.png" alt="Liks Mobile Logo">
+        <span>Liks Mobile</span>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="catalog.html">Katalog</a>
+        <a href="about.html">Tentang</a>
+        <a href="contact.html">Kontak</a>
+      </nav>
+    </header>
+    <section class="catalog">
+      <h2>Katalog iPhone</h2>
+      <div class="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <img src="images/placeholder1.png" alt="iPhone 13">
+          <h3>iPhone 13 128GB Midnight</h3>
+          <p>Condition: Mulus<br>Battery Health: 88%<br>IMEI &amp; iCloud: Aman</p>
+          <p class="price">Rp 8.000.000</p>
+          <a href="contact.html">Tanya Unit Ini</a>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-card">
+          <img src="images/placeholder2.png" alt="iPhone 12">
+          <h3>iPhone 12 64GB White</h3>
+          <p>Condition: Normal<br>Battery Health: 85%<br>IMEI &amp; iCloud: Aman</p>
+          <p class="price">Rp 6.000.000</p>
+          <a href="contact.html">Tanya Unit Ini</a>
+        </div>
+      </div>
+    </section>
+    <footer>
+      &copy; 2026 Liks Mobile. Semua hak dilindungi.
+    </footer>
+  </body>
+</html>
