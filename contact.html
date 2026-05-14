@@ -6,41 +6,13 @@
     <title>Kontak | Liks Mobile</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-      .contact-section {
-        padding: 3rem 2rem;
-        text-align: center;
-      }
-      .contact-details p {
-        margin: 0.5rem 0;
-      }
-      .contact-details a {
-        color: #7db9e8;
-        text-decoration: none;
-      }
-      .contact-details a:hover {
-        text-decoration: underline;
-      }
-      form {
-        max-width: 500px;
-        margin: 2rem auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      input, textarea {
-        padding: 0.75rem;
-        border-radius: 4px;
-        border: none;
-      }
-      input[type="submit"] {
-        background-color: #ffffff;
-        color: #0A2647;
-        font-weight: bold;
-        cursor: pointer;
-      }
-      input[type="submit"]:hover {
-        background-color: #e2e8f0;
-      }
+      .contact-section { padding: 3rem 2rem; text-align: center; }
+      .contact-details p { margin: 0.5rem 0; }
+      .contact-details a { color: #7db9e8; text-decoration: none; }
+      form { max-width: 500px; margin: 2rem auto; display: flex; flex-direction: column; gap: 1rem; }
+      input, textarea { padding: 0.75rem; border-radius: 4px; border: none; }
+      input[type="submit"] { background-color: #ffffff; color: #0A2647; font-weight: bold; cursor: pointer; }
+      .note { font-size: 0.9rem; color: #c5d3e8; max-width: 520px; margin: 1rem auto 0; }
     </style>
   </head>
   <body>
@@ -59,17 +31,21 @@
     <section class="contact-section">
       <h2>Hubungi Kami</h2>
       <div class="contact-details">
-        <p>WhatsApp: <a href="https://wa.me/6281234567890">+62&nbsp;812‑3456‑7890</a></p>
+        <p>WhatsApp: <a href="https://wa.me/6281234567890">+62 812-3456-7890</a></p>
         <p>Instagram: <a href="https://www.instagram.com/liksmobile">@liksmobile</a></p>
         <p>Email: <a href="mailto:aribarafan@gmail.com">aribarafan@gmail.com</a></p>
       </div>
       <p>Atau kirim pesan langsung melalui formulir di bawah ini:</p>
-      <form action="#" method="post">
-        <input type="text" name="name" placeholder="Nama Anda" required>
-        <input type="email" name="email" placeholder="Email Anda" required>
-        <textarea name="message" rows="5" placeholder="Pesan" required></textarea>
+      <form action="https://formsubmit.co/aribarafan@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Pesan baru dari website Liks Mobile">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://rafanmuh972-web.github.io/liks-mobile-website/thanks.html">
+        <input type="text" name="Nama" placeholder="Nama Anda" required>
+        <input type="email" name="Email" placeholder="Email Anda" required>
+        <textarea name="Pesan" rows="5" placeholder="Pesan" required></textarea>
         <input type="submit" value="Kirim Pesan">
       </form>
+      <p class="note">Pesan dari formulir ini akan dikirim ke email admin Liks Mobile.</p>
     </section>
     <footer>
       &copy; 2026 Liks Mobile. Semua hak dilindungi.
