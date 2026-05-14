@@ -9,7 +9,7 @@
     .catalog { padding: 3rem 2rem; text-align: center; }
     .products { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
     .product-card { background-color: #001f3f; border-radius: 12px; padding: 1.4rem; max-width: 280px; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.18); }
-    .product-card img { width: 100%; height: 220px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: .5rem; box-sizing: border-box; }
+    .product-card img { width: 100%; height: 230px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: .5rem; box-sizing: border-box; }
     .product-card h3 { margin: .9rem 0 .45rem; font-size: 1.15rem; min-height: 2.7rem; }
     .product-card .price { font-weight: bold; margin-bottom: .8rem; font-size: 1.1rem; }
     .product-card a { display: inline-block; padding: .55rem 1rem; background: #fff; color: #0A2647; border-radius: 5px; text-decoration: none; font-weight: bold; }
@@ -28,37 +28,39 @@
 <footer>&copy; 2026 Liks Mobile. Semua hak dilindungi.</footer>
 <script>
 const whatsappNumber = '6281291068802';
-const fallbackImg = 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg';
+const appleBase = 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/';
+const gsmBase = 'https://fdn2.gsmarena.com/vv/bigpic/';
+const fallbackImg = appleBase + 'iphone-compare-iphone-17-202509?fmt=png-alpha&hei=512&wid=400';
 const imageMap = {
-  'iPhone 8 Plus': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8-plus-new.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-8-plus-1.jpg'],
-  'iPhone X': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-x.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-x-new-1.jpg'],
-  'iPhone XR': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr-new.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-xr-new-1.jpg'],
-  'iPhone XS Max': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs-max-new1.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-xs-max-new1.jpg'],
-  'iPhone 11': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-1.jpg'],
-  'iPhone 11 Pro': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-pro-1.jpg'],
-  'iPhone 11 Pro Max': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro-max-.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-pro-max-1.jpg'],
-  'iPhone 12 Mini': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-mini-1.jpg'],
-  'iPhone 12': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-1.jpg'],
-  'iPhone 12 Pro': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-pro-1.jpg'],
-  'iPhone 12 Pro Max': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-pro-max-1.jpg'],
-  'iPhone 13': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-01.jpg'],
-  'iPhone 13 Pro': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-01.jpg'],
-  'iPhone 13 Pro Max': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-max-01.jpg'],
-  'iPhone 14': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-1.jpg'],
-  'iPhone 14 Plus': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-plus-1.jpg'],
-  'iPhone 14 Pro': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-pro-1.jpg'],
-  'iPhone 14 Pro Max': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-pro-max-1.jpg'],
-  'iPhone 15': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg'],
-  'iPhone 15 Plus': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-plus.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-plus-1.jpg'],
-  'iPhone 15 Pro': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-1.jpg'],
-  'iPhone 15 Pro Max': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-1.jpg'],
-  'iPhone 16': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-1.jpg'],
-  'iPhone 16 Plus': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-plus.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-plus-1.jpg'],
-  'iPhone 16 Pro': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-1.jpg'],
-  'iPhone 16 Pro Max': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-1.jpg'],
-  'iPhone 17': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-1.jpg'],
-  'iPhone 17 Pro': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-1.jpg'],
-  'iPhone 17 Pro Max': ['https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro-max.jpg', 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-max-1.jpg']
+  'iPhone 8 Plus': [gsmBase + 'apple-iphone-8-plus-new.jpg'],
+  'iPhone X': [gsmBase + 'apple-iphone-x.jpg'],
+  'iPhone XR': [gsmBase + 'apple-iphone-xr-new.jpg'],
+  'iPhone XS Max': [gsmBase + 'apple-iphone-xs-max-new1.jpg'],
+  'iPhone 11': [gsmBase + 'apple-iphone-11.jpg'],
+  'iPhone 11 Pro': [gsmBase + 'apple-iphone-11-pro.jpg'],
+  'iPhone 11 Pro Max': [gsmBase + 'apple-iphone-11-pro-max-.jpg', gsmBase + 'apple-iphone-11-pro-max.jpg'],
+  'iPhone 12 Mini': [gsmBase + 'apple-iphone-12-mini.jpg'],
+  'iPhone 12': [gsmBase + 'apple-iphone-12.jpg'],
+  'iPhone 12 Pro': [gsmBase + 'apple-iphone-12-pro.jpg'],
+  'iPhone 12 Pro Max': [gsmBase + 'apple-iphone-12-pro-max.jpg'],
+  'iPhone 13': [appleBase + 'iphone-compare-iphone-13-202109?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-13.jpg'],
+  'iPhone 13 Pro': [appleBase + 'iphone-compare-iphone-13-pro-202109?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-13-pro.jpg'],
+  'iPhone 13 Pro Max': [appleBase + 'iphone-compare-iphone-13-pro-202109?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-13-pro-max.jpg'],
+  'iPhone 14': [appleBase + 'iphone-compare-iphone-14-202209?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-14.jpg'],
+  'iPhone 14 Plus': [appleBase + 'iphone-compare-iphone-14-plus-202209?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-14-plus.jpg'],
+  'iPhone 14 Pro': [appleBase + 'iphone-compare-iphone-14-pro-202209?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-14-pro.jpg'],
+  'iPhone 14 Pro Max': [appleBase + 'iphone-compare-iphone-14-pro-202209?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-14-pro-max.jpg'],
+  'iPhone 15': [appleBase + 'iphone-compare-iphone-15-202309?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-15.jpg'],
+  'iPhone 15 Plus': [appleBase + 'iphone-compare-iphone-15-plus-202309?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-15-plus.jpg'],
+  'iPhone 15 Pro': [appleBase + 'iphone-compare-iphone-15-pro-202309?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-15-pro.jpg'],
+  'iPhone 15 Pro Max': [appleBase + 'iphone-compare-iphone-15-pro-202309?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-15-pro-max.jpg'],
+  'iPhone 16': [appleBase + 'iphone-compare-iphone-16-202409?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-16.jpg'],
+  'iPhone 16 Plus': [appleBase + 'iphone-compare-iphone-16-202409?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-16-plus.jpg'],
+  'iPhone 16 Pro': [appleBase + 'iphone-compare-iphone-16-pro-202409?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-16-pro.jpg'],
+  'iPhone 16 Pro Max': [appleBase + 'iphone-compare-iphone-16-pro-202409?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-16-pro-max.jpg'],
+  'iPhone 17': ['https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-17-202509?.v=M0dlUVBobHVpY1h1dmlaR3RZekpENGh0eTVTNkN2NWpWZVAwbzMwQlBCTkxxZU5scXpES1hnUm96ckN1R2pZN215d1FhSDJ0bkR0ZGZtUjZJNmFveFo2eWNJSlJFRDM1UWQ2eUozZ1l5ZDA&fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-17.jpg'],
+  'iPhone 17 Pro': ['https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-17-pro-202509?.v=M0dlUVBobHVpY1h1dmlaR3RZekpEMi9sbCsxVVJmYjNiS29STjQrZEV5NnNlL1VpWDFHcHBMQXVUWWdWdkZZNGJPbDJJWDFrVGJEYlIxTitTcHhVWldNTk4rSDJkMy8vL20va2hrM1NheXZ4VldteDRHenNWeThpV3EzUWVVd2o&fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-17-pro.jpg'],
+  'iPhone 17 Pro Max': ['https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-17-pro-202509?.v=M0dlUVBobHVpY1h1dmlaR3RZekpEMi9sbCsxVVJmYjNiS29STjQrZEV5NnNlL1VpWDFHcHBMQXVUWWdWdkZZNGJPbDJJWDFrVGJEYlIxTitTcHhVWldNTk4rSDJkMy8vL20va2hrM1NheXZ4VldteDRHenNWeThpV3EzUWVVd2o&fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-17-pro-max.jpg']
 };
 const items = [
 ['iPhone 8 Plus','64GB','Rp 2.624.000'],['iPhone 8 Plus','256GB','Rp 3.024.000'],['iPhone X','64GB','Rp 3.115.000'],['iPhone X','256GB','Rp 3.924.000'],['iPhone XR','64GB','Rp 4.324.000'],['iPhone XR','128GB','Rp 4.924.000'],['iPhone XS Max','64GB','Rp 4.115.000'],['iPhone XS Max','256GB','Rp 5.015.000'],
@@ -70,12 +72,12 @@ const items = [
 ['iPhone 16','128GB','Rp 14.615.000'],['iPhone 16','256GB','Rp 17.115.000'],['iPhone 16','512GB','Rp 21.115.000'],['iPhone 16 Plus','128GB','Rp 14.615.000'],['iPhone 16 Plus','256GB','Rp 16.115.000'],['iPhone 16 Pro','128GB','Rp 17.615.000'],['iPhone 16 Pro','256GB','Rp 20.115.000'],['iPhone 16 Pro','512GB','Rp 23.615.000'],['iPhone 16 Pro','1TB','Rp 28.115.000'],['iPhone 16 Pro Max','256GB','Rp 18.115.000'],['iPhone 16 Pro Max','512GB','Rp 21.115.000'],['iPhone 16 Pro Max','1TB','Rp 29.615.000'],
 ['iPhone 17','256GB','Rp 17.215.000'],['iPhone 17','512GB','Rp 22.065.000'],['iPhone 17 Pro','256GB','Rp 23.115.000'],['iPhone 17 Pro','512GB','Rp 27.915.000'],['iPhone 17 Pro','1TB','Rp 32.665.000'],['iPhone 17 Pro Max','256GB','Rp 25.124.000'],['iPhone 17 Pro Max','512GB','Rp 30.115.000'],['iPhone 17 Pro Max','1TB','Rp 35.115.000'],['iPhone 17 Pro Max','2TB','Rp 43.615.000']
 ];
-function setNextImage(img) {
+function nextImage(img) {
   const list = (img.dataset.sources || '').split('|').filter(Boolean);
-  let index = Number(img.dataset.index || '0') + 1;
-  if (index < list.length) {
-    img.dataset.index = String(index);
-    img.src = list[index];
+  let i = Number(img.dataset.index || '0') + 1;
+  if (i < list.length) {
+    img.dataset.index = String(i);
+    img.src = list[i];
   } else {
     img.onerror = null;
     img.src = fallbackImg;
@@ -85,11 +87,9 @@ const wrap = document.getElementById('products');
 wrap.innerHTML = items.map(([model,storage,price]) => {
   const title = `${model} ${storage}`;
   const sources = imageMap[model] || [fallbackImg];
-  const img = sources[0];
-  const sourcesAttr = sources.join('|');
   const message = encodeURIComponent(`Halo Liks Mobile, saya mau tanya unit ${title} dengan harga ${price}. Apakah masih tersedia?`);
   const waLink = `https://wa.me/${whatsappNumber}?text=${message}`;
-  return `<div class="product-card"><img src="${img}" data-sources="${sourcesAttr}" data-index="0" alt="${title}" loading="lazy" onerror="setNextImage(this)"><h3>${title}</h3><p class="price">${price}</p><a href="${waLink}" target="_blank" rel="noopener">Tanya Unit Ini</a></div>`;
+  return `<div class="product-card"><img src="${sources[0]}" data-sources="${sources.join('|')}" data-index="0" alt="${title}" loading="lazy" onerror="nextImage(this)"><h3>${title}</h3><p class="price">${price}</p><a href="${waLink}" target="_blank" rel="noopener">Tanya Unit Ini</a></div>`;
 }).join('');
 </script>
 </body>
