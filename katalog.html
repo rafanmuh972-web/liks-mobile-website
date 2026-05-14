@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     .catalog { padding: 3rem 2rem; text-align: center; }
-    .catalog .lead { max-width: 720px; margin: 0 auto 2rem; color: #c5d3e8; }
+    .catalog .lead { max-width: 760px; margin: 0 auto 2rem; color: #c5d3e8; line-height: 1.6; }
     .products { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-    .product-card { background-color: #001f3f; border-radius: 10px; padding: 1.4rem; max-width: 280px; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.18); }
-    .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 6px; background-color: #162b51; }
+    .product-card { background-color: #001f3f; border-radius: 12px; padding: 1.4rem; max-width: 280px; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+    .product-card img { width: 100%; height: 220px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: .5rem; box-sizing: border-box; }
     .product-card h3 { margin: .9rem 0 .45rem; font-size: 1.15rem; min-height: 2.7rem; }
     .product-card .price { font-weight: bold; margin-bottom: .8rem; font-size: 1.1rem; }
     .product-card a { display: inline-block; padding: .55rem 1rem; background: #fff; color: #0A2647; border-radius: 5px; text-decoration: none; font-weight: bold; }
@@ -20,15 +20,47 @@
 <body>
 <header>
   <div class="logo"><img src="images/liks_logo_simple.png" alt="Liks Mobile Logo"><span>Liks Mobile</span></div>
-  <nav><a href="index.html">Home</a><a href="katalog.html">Katalog</a><a href="about.html">Tentang</a><a href="contact.html">Kontak</a></nav>
+  <nav><a href="index.html">Home</a><a href="catalog.html">Katalog</a><a href="about.html">Tentang</a><a href="contact.html">Kontak</a></nav>
 </header>
 <section class="catalog">
   <h2>Katalog iPhone</h2>
-  <p class="lead">Gambar katalog sudah disesuaikan berdasarkan tipe iPhone. Harga sudah termasuk penyesuaian tambahan Rp 125.000.</p>
+  <p class="lead">Gambar produk sekarang memakai gambar iPhone dari internet dan disesuaikan berdasarkan tipe model. Harga sudah termasuk penyesuaian tambahan Rp 125.000.</p>
   <div class="products" id="products"></div>
 </section>
 <footer>&copy; 2026 Liks Mobile. Semua hak dilindungi.</footer>
 <script>
+const fallbackImg = 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg';
+const imageMap = {
+  'iPhone 8 Plus': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-8-plus-1.jpg',
+  'iPhone X': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-x-new-1.jpg',
+  'iPhone XR': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-xr-new-1.jpg',
+  'iPhone XS Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-xs-max-new1.jpg',
+  'iPhone 11': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-1.jpg',
+  'iPhone 11 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-pro-1.jpg',
+  'iPhone 11 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-11-pro-max-1.jpg',
+  'iPhone 12 Mini': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-mini-1.jpg',
+  'iPhone 12': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-1.jpg',
+  'iPhone 12 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-pro-1.jpg',
+  'iPhone 12 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-pro-max-1.jpg',
+  'iPhone 13': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-01.jpg',
+  'iPhone 13 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-01.jpg',
+  'iPhone 13 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-max-01.jpg',
+  'iPhone 14': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-1.jpg',
+  'iPhone 14 Plus': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-plus-1.jpg',
+  'iPhone 14 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-pro-1.jpg',
+  'iPhone 14 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-pro-max-1.jpg',
+  'iPhone 15': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg',
+  'iPhone 15 Plus': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-plus-1.jpg',
+  'iPhone 15 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-1.jpg',
+  'iPhone 15 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-1.jpg',
+  'iPhone 16': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-1.jpg',
+  'iPhone 16 Plus': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-plus-1.jpg',
+  'iPhone 16 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-1.jpg',
+  'iPhone 16 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-1.jpg',
+  'iPhone 17': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-1.jpg',
+  'iPhone 17 Pro': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-1.jpg',
+  'iPhone 17 Pro Max': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-max-1.jpg'
+};
 const items = [
 ['iPhone 8 Plus','64GB','Rp 2.624.000'],['iPhone 8 Plus','256GB','Rp 3.024.000'],['iPhone X','64GB','Rp 3.115.000'],['iPhone X','256GB','Rp 3.924.000'],['iPhone XR','64GB','Rp 4.324.000'],['iPhone XR','128GB','Rp 4.924.000'],['iPhone XS Max','64GB','Rp 4.115.000'],['iPhone XS Max','256GB','Rp 5.015.000'],
 ['iPhone 11','64GB','Rp 4.715.000'],['iPhone 11','128GB','Rp 5.815.000'],['iPhone 11 Pro','64GB','Rp 6.115.000'],['iPhone 11 Pro','128GB','Rp 6.915.000'],['iPhone 11 Pro Max','64GB','Rp 6.815.000'],['iPhone 11 Pro Max','256GB','Rp 7.515.000'],
@@ -39,26 +71,12 @@ const items = [
 ['iPhone 16','128GB','Rp 14.615.000'],['iPhone 16','256GB','Rp 17.115.000'],['iPhone 16','512GB','Rp 21.115.000'],['iPhone 16 Plus','128GB','Rp 14.615.000'],['iPhone 16 Plus','256GB','Rp 16.115.000'],['iPhone 16 Pro','128GB','Rp 17.615.000'],['iPhone 16 Pro','256GB','Rp 20.115.000'],['iPhone 16 Pro','512GB','Rp 23.615.000'],['iPhone 16 Pro','1TB','Rp 28.115.000'],['iPhone 16 Pro Max','256GB','Rp 18.115.000'],['iPhone 16 Pro Max','512GB','Rp 21.115.000'],['iPhone 16 Pro Max','1TB','Rp 29.615.000'],
 ['iPhone 17','256GB','Rp 17.215.000'],['iPhone 17','512GB','Rp 22.065.000'],['iPhone 17 Pro','256GB','Rp 23.115.000'],['iPhone 17 Pro','512GB','Rp 27.915.000'],['iPhone 17 Pro','1TB','Rp 32.665.000'],['iPhone 17 Pro Max','256GB','Rp 25.124.000'],['iPhone 17 Pro Max','512GB','Rp 30.115.000'],['iPhone 17 Pro Max','1TB','Rp 35.115.000'],['iPhone 17 Pro Max','2TB','Rp 43.615.000']
 ];
-function imgFor(model){
-  if(model.includes('17')) return 'whatsapp1.jpeg';
-  if(model.includes('16 Pro') || model === 'iPhone 16') return 'whatsapp5.jpeg';
-  if(model.includes('16 Plus')) return 'whatsapp9.jpeg';
-  if(model.includes('15 Plus') || model.includes('15 Pro')) return 'whatsapp9.jpeg';
-  if(model === 'iPhone 15') return 'whatsapp5.jpeg';
-  if(model.includes('14 Plus') || model.includes('14 Pro')) return 'whatsapp12.jpeg';
-  if(model === 'iPhone 14') return 'whatsapp5.jpeg';
-  if(model.includes('13 Pro')) return 'whatsapp12.jpeg';
-  if(model === 'iPhone 13') return 'whatsapp5.jpeg';
-  if(model.includes('12')) return 'whatsapp11.jpeg';
-  if(model.includes('11 Pro Max')) return 'whatsapp11.jpeg';
-  if(model.includes('11')) return 'whatsapp10.jpeg';
-  return 'whatsapp10.jpeg';
-}
 const wrap = document.getElementById('products');
 wrap.innerHTML = items.map(([model,storage,price]) => {
   const title = `${model} ${storage}`;
   const subject = encodeURIComponent(`Inquiry about ${title}`);
-  return `<div class="product-card"><img src="images/${imgFor(model)}" alt="${title}"><h3>${title}</h3><p class="price">${price}</p><a href="mailto:aribarafan@gmail.com?subject=${subject}">Tanya Unit Ini</a></div>`;
+  const img = imageMap[model] || fallbackImg;
+  return `<div class="product-card"><img src="${img}" alt="${title}" onerror="this.onerror=null;this.src='${fallbackImg}'"><h3>${title}</h3><p class="price">${price}</p><a href="mailto:aribarafan@gmail.com?subject=${subject}">Tanya Unit Ini</a></div>`;
 }).join('');
 </script>
 </body>
