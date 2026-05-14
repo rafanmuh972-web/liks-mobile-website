@@ -27,6 +27,7 @@
 </section>
 <footer>&copy; 2026 Liks Mobile. Semua hak dilindungi.</footer>
 <script>
+const whatsappNumber = '6281291068802';
 const fallbackImg = 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg';
 const imageMap = {
   'iPhone 8 Plus': 'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-8-plus-1.jpg',
@@ -72,9 +73,10 @@ const items = [
 const wrap = document.getElementById('products');
 wrap.innerHTML = items.map(([model,storage,price]) => {
   const title = `${model} ${storage}`;
-  const subject = encodeURIComponent(`Inquiry about ${title}`);
   const img = imageMap[model] || fallbackImg;
-  return `<div class="product-card"><img src="${img}" alt="${title}" onerror="this.onerror=null;this.src='${fallbackImg}'"><h3>${title}</h3><p class="price">${price}</p><a href="mailto:aribarafan@gmail.com?subject=${subject}">Tanya Unit Ini</a></div>`;
+  const message = encodeURIComponent(`Halo Liks Mobile, saya mau tanya unit ${title} dengan harga ${price}. Apakah masih tersedia?`);
+  const waLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+  return `<div class="product-card"><img src="${img}" alt="${title}" onerror="this.onerror=null;this.src='${fallbackImg}'"><h3>${title}</h3><p class="price">${price}</p><a href="${waLink}" target="_blank" rel="noopener">Tanya Unit Ini</a></div>`;
 }).join('');
 </script>
 </body>
