@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog iPhone | Liks Mobile</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .catalog { padding: 3rem 2rem; text-align: center; }
+    .catalog .lead { max-width: 720px; margin: 0 auto 2rem; color: #c5d3e8; }
+    .products { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+    .product-card { background-color: #001f3f; border-radius: 10px; padding: 1.4rem; max-width: 280px; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+    .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 6px; background-color: #162b51; }
+    .product-card h3 { margin: .9rem 0 .45rem; font-size: 1.15rem; min-height: 2.7rem; }
+    .product-card .price { font-weight: bold; margin-bottom: .8rem; font-size: 1.1rem; }
+    .product-card a { display: inline-block; padding: .55rem 1rem; background: #fff; color: #0A2647; border-radius: 5px; text-decoration: none; font-weight: bold; }
+    .product-card a:hover { background: #e2e8f0; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo"><img src="images/liks_logo_simple.png" alt="Liks Mobile Logo"><span>Liks Mobile</span></div>
+  <nav><a href="index.html">Home</a><a href="katalog.html">Katalog</a><a href="about.html">Tentang</a><a href="contact.html">Kontak</a></nav>
+</header>
+<section class="catalog">
+  <h2>Katalog iPhone</h2>
+  <p class="lead">Gambar katalog sudah disesuaikan berdasarkan tipe iPhone. Harga sudah termasuk penyesuaian tambahan Rp 125.000.</p>
+  <div class="products" id="products"></div>
+</section>
+<footer>&copy; 2026 Liks Mobile. Semua hak dilindungi.</footer>
+<script>
+const items = [
+['iPhone 8 Plus','64GB','Rp 2.624.000'],['iPhone 8 Plus','256GB','Rp 3.024.000'],['iPhone X','64GB','Rp 3.115.000'],['iPhone X','256GB','Rp 3.924.000'],['iPhone XR','64GB','Rp 4.324.000'],['iPhone XR','128GB','Rp 4.924.000'],['iPhone XS Max','64GB','Rp 4.115.000'],['iPhone XS Max','256GB','Rp 5.015.000'],
+['iPhone 11','64GB','Rp 4.715.000'],['iPhone 11','128GB','Rp 5.815.000'],['iPhone 11 Pro','64GB','Rp 6.115.000'],['iPhone 11 Pro','128GB','Rp 6.915.000'],['iPhone 11 Pro Max','64GB','Rp 6.815.000'],['iPhone 11 Pro Max','256GB','Rp 7.515.000'],
+['iPhone 12 Mini','64GB','Rp 5.115.000'],['iPhone 12 Mini','256GB','Rp 5.715.000'],['iPhone 12','64GB','Rp 5.615.000'],['iPhone 12','128GB','Rp 6.265.000'],['iPhone 12 Pro','64GB','Rp 7.365.000'],['iPhone 12 Pro','128GB','Rp 5.865.000'],['iPhone 12 Pro','256GB','Rp 8.115.000'],['iPhone 12 Pro Max','64GB','Rp 8.365.000'],['iPhone 12 Pro Max','128GB','Rp 6.515.000'],['iPhone 12 Pro Max','256GB','Rp 9.415.000'],
+['iPhone 13','128GB','Rp 8.415.000'],['iPhone 13','256GB','Rp 8.615.000'],['iPhone 13 Pro','128GB','Rp 8.915.000'],['iPhone 13 Pro','256GB','Rp 9.915.000'],['iPhone 13 Pro Max','128GB','Rp 10.015.000'],['iPhone 13 Pro Max','256GB','Rp 11.015.000'],
+['iPhone 14','128GB','Rp 9.115.000'],['iPhone 14','256GB','Rp 11.115.000'],['iPhone 14 Plus','128GB','Rp 8.865.000'],['iPhone 14 Plus','256GB','Rp 10.115.000'],['iPhone 14 Pro','128GB','Rp 11.915.000'],['iPhone 14 Pro','256GB','Rp 13.015.000'],['iPhone 14 Pro Max','128GB','Rp 12.515.000'],['iPhone 14 Pro Max','256GB','Rp 13.515.000'],
+['iPhone 15','128GB','Rp 11.865.000'],['iPhone 15','256GB','Rp 13.615.000'],['iPhone 15 Plus','128GB','Rp 11.015.000'],['iPhone 15 Plus','256GB','Rp 12.915.000'],['iPhone 15 Pro','128GB','Rp 13.915.000'],['iPhone 15 Pro','256GB','Rp 15.315.000'],['iPhone 15 Pro Max','256GB','Rp 15.615.000'],['iPhone 15 Pro Max','512GB','Rp 17.615.000'],
+['iPhone 16','128GB','Rp 14.615.000'],['iPhone 16','256GB','Rp 17.115.000'],['iPhone 16','512GB','Rp 21.115.000'],['iPhone 16 Plus','128GB','Rp 14.615.000'],['iPhone 16 Plus','256GB','Rp 16.115.000'],['iPhone 16 Pro','128GB','Rp 17.615.000'],['iPhone 16 Pro','256GB','Rp 20.115.000'],['iPhone 16 Pro','512GB','Rp 23.615.000'],['iPhone 16 Pro','1TB','Rp 28.115.000'],['iPhone 16 Pro Max','256GB','Rp 18.115.000'],['iPhone 16 Pro Max','512GB','Rp 21.115.000'],['iPhone 16 Pro Max','1TB','Rp 29.615.000'],
+['iPhone 17','256GB','Rp 17.215.000'],['iPhone 17','512GB','Rp 22.065.000'],['iPhone 17 Pro','256GB','Rp 23.115.000'],['iPhone 17 Pro','512GB','Rp 27.915.000'],['iPhone 17 Pro','1TB','Rp 32.665.000'],['iPhone 17 Pro Max','256GB','Rp 25.124.000'],['iPhone 17 Pro Max','512GB','Rp 30.115.000'],['iPhone 17 Pro Max','1TB','Rp 35.115.000'],['iPhone 17 Pro Max','2TB','Rp 43.615.000']
+];
+function imgFor(model){
+  if(model.includes('17')) return 'whatsapp1.jpeg';
+  if(model.includes('16 Pro') || model === 'iPhone 16') return 'whatsapp5.jpeg';
+  if(model.includes('16 Plus')) return 'whatsapp9.jpeg';
+  if(model.includes('15 Plus') || model.includes('15 Pro')) return 'whatsapp9.jpeg';
+  if(model === 'iPhone 15') return 'whatsapp5.jpeg';
+  if(model.includes('14 Plus') || model.includes('14 Pro')) return 'whatsapp12.jpeg';
+  if(model === 'iPhone 14') return 'whatsapp5.jpeg';
+  if(model.includes('13 Pro')) return 'whatsapp12.jpeg';
+  if(model === 'iPhone 13') return 'whatsapp5.jpeg';
+  if(model.includes('12')) return 'whatsapp11.jpeg';
+  if(model.includes('11 Pro Max')) return 'whatsapp11.jpeg';
+  if(model.includes('11')) return 'whatsapp10.jpeg';
+  return 'whatsapp10.jpeg';
+}
+const wrap = document.getElementById('products');
+wrap.innerHTML = items.map(([model,storage,price]) => {
+  const title = `${model} ${storage}`;
+  const subject = encodeURIComponent(`Inquiry about ${title}`);
+  return `<div class="product-card"><img src="images/${imgFor(model)}" alt="${title}"><h3>${title}</h3><p class="price">${price}</p><a href="mailto:aribarafan@gmail.com?subject=${subject}">Tanya Unit Ini</a></div>`;
+}).join('');
+</script>
+</body>
+</html>
