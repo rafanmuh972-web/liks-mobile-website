@@ -1,96 +1,48 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Katalog iPhone | Liks Mobile</title>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    .catalog { padding: 3rem 2rem; text-align: center; }
-    .products { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-    .product-card { background-color: #001f3f; border-radius: 12px; padding: 1.4rem; max-width: 280px; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,.18); }
-    .product-card img { width: 100%; height: 230px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: .5rem; box-sizing: border-box; }
-    .product-card h3 { margin: .9rem 0 .45rem; font-size: 1.15rem; min-height: 2.7rem; }
-    .product-card .price { font-weight: bold; margin-bottom: .8rem; font-size: 1.1rem; }
-    .product-card a { display: inline-block; padding: .55rem 1rem; background: #fff; color: #0A2647; border-radius: 5px; text-decoration: none; font-weight: bold; }
-    .product-card a:hover { background: #e2e8f0; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katalog iPhone | Liks Mobile</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.catalog{padding:3rem 2rem;text-align:center}.toolbar{max-width:1050px;margin:0 auto 2rem;display:flex;gap:.75rem;justify-content:center;align-items:center;flex-wrap:wrap}.toolbar button,.toolbar input{border:0;border-radius:999px;padding:.75rem 1rem}.toolbar button{background:#fff;color:#0A2647;font-weight:700;cursor:pointer}.toolbar button.active{background:#7db9e8;color:#001f3f}.toolbar input{min-width:245px}.products{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center}.product-card{background:#001f3f;border-radius:12px;padding:1.4rem;max-width:280px;text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.18)}.badge{display:inline-block;background:#7db9e8;color:#001f3f;font-weight:700;font-size:.78rem;border-radius:999px;padding:.28rem .7rem;margin-bottom:.7rem}.product-card img{width:100%;height:230px;object-fit:contain;border-radius:8px;background:#f7f7f7;padding:.5rem;box-sizing:border-box}.product-card h3{margin:.9rem 0 .35rem;font-size:1.15rem;min-height:2.7rem}.meta{font-size:.85rem;color:#c5d3e8;margin:.2rem 0 .5rem}.price{font-weight:700;margin-bottom:.8rem;font-size:1.1rem}.product-card a{display:inline-block;padding:.55rem 1rem;background:#fff;color:#0A2647;border-radius:5px;text-decoration:none;font-weight:700}.product-card a:hover{background:#e2e8f0}.empty{color:#c5d3e8;margin:2rem 0}
+</style>
 </head>
 <body>
-<header>
-  <div class="logo"><img src="images/liks_logo_simple.png" alt="Liks Mobile Logo"><span>Liks Mobile</span></div>
-  <nav><a href="index.html">Home</a><a href="catalog.html">Katalog</a><a href="about.html">Tentang</a><a href="contact.html">Kontak</a></nav>
-</header>
-<section class="catalog">
-  <h2>Katalog iPhone</h2>
-  <div class="products" id="products"></div>
-</section>
+<header><div class="logo"><img src="images/liks_logo_simple.png" alt="Liks Mobile Logo"><span>Liks Mobile</span></div><nav><a href="index.html">Home</a><a href="katalog.html">Katalog</a><a href="about.html">Tentang</a><a href="contact.html">Kontak</a></nav></header>
+<section class="catalog"><h2>Katalog iPhone</h2><div class="toolbar"><button class="active" data-cat="Semua">Semua</button><button data-cat="Ex iBox">Ex iBox</button><button data-cat="Ex Inter">Ex Inter</button><button data-cat="Bea Cukai">Bea Cukai</button><button data-cat="Brand New">Brand New</button><input id="searchInput" type="search" placeholder="Cari tipe iPhone..."></div><div class="products" id="products"></div></section>
 <footer>&copy; 2026 Liks Mobile. Semua hak dilindungi.</footer>
 <script>
-const whatsappNumber = '6281291068802';
-const appleBase = 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/';
-const gsmBase = 'https://fdn2.gsmarena.com/vv/bigpic/';
-const fallbackImg = appleBase + 'iphone-compare-iphone-17-202509?fmt=png-alpha&hei=512&wid=400';
-const imageMap = {
-  'iPhone 8 Plus': [gsmBase + 'apple-iphone-8-plus-new.jpg'],
-  'iPhone X': [gsmBase + 'apple-iphone-x.jpg'],
-  'iPhone XR': [gsmBase + 'apple-iphone-xr-new.jpg'],
-  'iPhone XS Max': [gsmBase + 'apple-iphone-xs-max-new1.jpg'],
-  'iPhone 11': [gsmBase + 'apple-iphone-11.jpg'],
-  'iPhone 11 Pro': [gsmBase + 'apple-iphone-11-pro.jpg'],
-  'iPhone 11 Pro Max': [gsmBase + 'apple-iphone-11-pro-max-.jpg', gsmBase + 'apple-iphone-11-pro-max.jpg'],
-  'iPhone 12 Mini': [gsmBase + 'apple-iphone-12-mini.jpg'],
-  'iPhone 12': [gsmBase + 'apple-iphone-12.jpg'],
-  'iPhone 12 Pro': [gsmBase + 'apple-iphone-12-pro.jpg'],
-  'iPhone 12 Pro Max': [gsmBase + 'apple-iphone-12-pro-max.jpg'],
-  'iPhone 13': [appleBase + 'iphone-compare-iphone-13-202109?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-13.jpg'],
-  'iPhone 13 Pro': [appleBase + 'iphone-compare-iphone-13-pro-202109?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-13-pro.jpg'],
-  'iPhone 13 Pro Max': [appleBase + 'iphone-compare-iphone-13-pro-202109?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-13-pro-max.jpg'],
-  'iPhone 14': [appleBase + 'iphone-compare-iphone-14-202209?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-14.jpg'],
-  'iPhone 14 Plus': [appleBase + 'iphone-compare-iphone-14-plus-202209?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-14-plus.jpg'],
-  'iPhone 14 Pro': [appleBase + 'iphone-compare-iphone-14-pro-202209?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-14-pro.jpg'],
-  'iPhone 14 Pro Max': [appleBase + 'iphone-compare-iphone-14-pro-202209?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-14-pro-max.jpg'],
-  'iPhone 15': [appleBase + 'iphone-compare-iphone-15-202309?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-15.jpg'],
-  'iPhone 15 Plus': [appleBase + 'iphone-compare-iphone-15-plus-202309?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-15-plus.jpg'],
-  'iPhone 15 Pro': [appleBase + 'iphone-compare-iphone-15-pro-202309?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-15-pro.jpg'],
-  'iPhone 15 Pro Max': [appleBase + 'iphone-compare-iphone-15-pro-202309?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-15-pro-max.jpg'],
-  'iPhone 16': [appleBase + 'iphone-compare-iphone-16-202409?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-16.jpg'],
-  'iPhone 16 Plus': [appleBase + 'iphone-compare-iphone-16-202409?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-16-plus.jpg'],
-  'iPhone 16 Pro': [appleBase + 'iphone-compare-iphone-16-pro-202409?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-16-pro.jpg'],
-  'iPhone 16 Pro Max': [appleBase + 'iphone-compare-iphone-16-pro-202409?fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-16-pro-max.jpg'],
-  'iPhone 17': ['https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-17-202509?.v=M0dlUVBobHVpY1h1dmlaR3RZekpENGh0eTVTNkN2NWpWZVAwbzMwQlBCTkxxZU5scXpES1hnUm96ckN1R2pZN215d1FhSDJ0bkR0ZGZtUjZJNmFveFo2eWNJSlJFRDM1UWQ2eUozZ1l5ZDA&fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-17.jpg'],
-  'iPhone 17 Pro': ['https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-17-pro-202509?.v=M0dlUVBobHVpY1h1dmlaR3RZekpEMi9sbCsxVVJmYjNiS29STjQrZEV5NnNlL1VpWDFHcHBMQXVUWWdWdkZZNGJPbDJJWDFrVGJEYlIxTitTcHhVWldNTk4rSDJkMy8vL20va2hrM1NheXZ4VldteDRHenNWeThpV3EzUWVVd2o&fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-17-pro.jpg'],
-  'iPhone 17 Pro Max': ['https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-17-pro-202509?.v=M0dlUVBobHVpY1h1dmlaR3RZekpEMi9sbCsxVVJmYjNiS29STjQrZEV5NnNlL1VpWDFHcHBMQXVUWWdWdkZZNGJPbDJJWDFrVGJEYlIxTitTcHhVWldNTk4rSDJkMy8vL20va2hrM1NheXZ4VldteDRHenNWeThpV3EzUWVVd2o&fmt=png-alpha&hei=512&wid=400', gsmBase + 'apple-iphone-17-pro-max.jpg']
+const whatsappNumber='6281291068802';
+const gsm='https://fdn2.gsmarena.com/vv/bigpic/';
+const apple='https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/';
+const fallbackImg=gsm+'apple-iphone-15.jpg';
+const imageMap={
+'iPhone 8 Plus':[gsm+'apple-iphone-8-plus-new.jpg'],'iPhone X':[gsm+'apple-iphone-x.jpg'],'iPhone XR':[gsm+'apple-iphone-xr-new.jpg'],'iPhone XS Max':[gsm+'apple-iphone-xs-max-new1.jpg'],
+'iPhone 11':[gsm+'apple-iphone-11.jpg'],'iPhone 11 Pro':[gsm+'apple-iphone-11-pro.jpg'],'iPhone 11 Pro Max':[gsm+'apple-iphone-11-pro-max-.jpg',gsm+'apple-iphone-11-pro-max.jpg'],
+'iPhone 12 Mini':[gsm+'apple-iphone-12-mini.jpg'],'iPhone 12':[gsm+'apple-iphone-12.jpg'],'iPhone 12 Pro':[gsm+'apple-iphone-12-pro.jpg'],'iPhone 12 Pro Max':[gsm+'apple-iphone-12-pro-max.jpg'],
+'iPhone 13':[apple+'iphone-compare-iphone-13-202109?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-13.jpg'],'iPhone 13 Pro':[apple+'iphone-compare-iphone-13-pro-202109?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-13-pro.jpg'],'iPhone 13 Pro Max':[apple+'iphone-compare-iphone-13-pro-202109?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-13-pro-max.jpg'],
+'iPhone 14':[apple+'iphone-compare-iphone-14-202209?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-14.jpg'],'iPhone 14 Plus':[apple+'iphone-compare-iphone-14-plus-202209?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-14-plus.jpg'],'iPhone 14 Pro':[apple+'iphone-compare-iphone-14-pro-202209?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-14-pro.jpg'],'iPhone 14 Pro Max':[apple+'iphone-compare-iphone-14-pro-202209?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-14-pro-max.jpg'],
+'iPhone 15':[apple+'iphone-compare-iphone-15-202309?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-15.jpg'],'iPhone 15 Plus':[apple+'iphone-compare-iphone-15-plus-202309?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-15-plus.jpg'],'iPhone 15 Pro':[apple+'iphone-compare-iphone-15-pro-202309?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-15-pro.jpg'],'iPhone 15 Pro Max':[apple+'iphone-compare-iphone-15-pro-202309?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-15-pro-max.jpg'],
+'iPhone 16':[apple+'iphone-compare-iphone-16-202409?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-16.jpg'],'iPhone 16 Plus':[apple+'iphone-compare-iphone-16-202409?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-16-plus.jpg'],'iPhone 16 Pro':[apple+'iphone-compare-iphone-16-pro-202409?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-16-pro.jpg'],'iPhone 16 Pro Max':[apple+'iphone-compare-iphone-16-pro-202409?fmt=png-alpha&hei=512&wid=400',gsm+'apple-iphone-16-pro-max.jpg'],
+'iPhone 17':[gsm+'apple-iphone-17.jpg'],'iPhone 17 Pro':[gsm+'apple-iphone-17-pro.jpg'],'iPhone 17 Pro Max':[gsm+'apple-iphone-17-pro-max.jpg']
 };
-const items = [
-['iPhone 8 Plus','64GB','Rp 2.624.000'],['iPhone 8 Plus','256GB','Rp 3.024.000'],['iPhone X','64GB','Rp 3.115.000'],['iPhone X','256GB','Rp 3.924.000'],['iPhone XR','64GB','Rp 4.324.000'],['iPhone XR','128GB','Rp 4.924.000'],['iPhone XS Max','64GB','Rp 4.115.000'],['iPhone XS Max','256GB','Rp 5.015.000'],
-['iPhone 11','64GB','Rp 4.715.000'],['iPhone 11','128GB','Rp 5.815.000'],['iPhone 11 Pro','64GB','Rp 6.115.000'],['iPhone 11 Pro','128GB','Rp 6.915.000'],['iPhone 11 Pro Max','64GB','Rp 6.815.000'],['iPhone 11 Pro Max','256GB','Rp 7.515.000'],
-['iPhone 12 Mini','64GB','Rp 5.115.000'],['iPhone 12 Mini','256GB','Rp 5.715.000'],['iPhone 12','64GB','Rp 5.615.000'],['iPhone 12','128GB','Rp 6.265.000'],['iPhone 12 Pro','64GB','Rp 7.365.000'],['iPhone 12 Pro','128GB','Rp 5.865.000'],['iPhone 12 Pro','256GB','Rp 8.115.000'],['iPhone 12 Pro Max','64GB','Rp 8.365.000'],['iPhone 12 Pro Max','128GB','Rp 6.515.000'],['iPhone 12 Pro Max','256GB','Rp 9.415.000'],
-['iPhone 13','128GB','Rp 8.415.000'],['iPhone 13','256GB','Rp 8.615.000'],['iPhone 13 Pro','128GB','Rp 8.915.000'],['iPhone 13 Pro','256GB','Rp 9.915.000'],['iPhone 13 Pro Max','128GB','Rp 10.015.000'],['iPhone 13 Pro Max','256GB','Rp 11.015.000'],
-['iPhone 14','128GB','Rp 9.115.000'],['iPhone 14','256GB','Rp 11.115.000'],['iPhone 14 Plus','128GB','Rp 8.865.000'],['iPhone 14 Plus','256GB','Rp 10.115.000'],['iPhone 14 Pro','128GB','Rp 11.915.000'],['iPhone 14 Pro','256GB','Rp 13.015.000'],['iPhone 14 Pro Max','128GB','Rp 12.515.000'],['iPhone 14 Pro Max','256GB','Rp 13.515.000'],
-['iPhone 15','128GB','Rp 11.865.000'],['iPhone 15','256GB','Rp 13.615.000'],['iPhone 15 Plus','128GB','Rp 11.015.000'],['iPhone 15 Plus','256GB','Rp 12.915.000'],['iPhone 15 Pro','128GB','Rp 13.915.000'],['iPhone 15 Pro','256GB','Rp 15.315.000'],['iPhone 15 Pro Max','256GB','Rp 15.615.000'],['iPhone 15 Pro Max','512GB','Rp 17.615.000'],
-['iPhone 16','128GB','Rp 14.615.000'],['iPhone 16','256GB','Rp 17.115.000'],['iPhone 16','512GB','Rp 21.115.000'],['iPhone 16 Plus','128GB','Rp 14.615.000'],['iPhone 16 Plus','256GB','Rp 16.115.000'],['iPhone 16 Pro','128GB','Rp 17.615.000'],['iPhone 16 Pro','256GB','Rp 20.115.000'],['iPhone 16 Pro','512GB','Rp 23.615.000'],['iPhone 16 Pro','1TB','Rp 28.115.000'],['iPhone 16 Pro Max','256GB','Rp 18.115.000'],['iPhone 16 Pro Max','512GB','Rp 21.115.000'],['iPhone 16 Pro Max','1TB','Rp 29.615.000'],
-['iPhone 17','256GB','Rp 17.215.000'],['iPhone 17','512GB','Rp 22.065.000'],['iPhone 17 Pro','256GB','Rp 23.115.000'],['iPhone 17 Pro','512GB','Rp 27.915.000'],['iPhone 17 Pro','1TB','Rp 32.665.000'],['iPhone 17 Pro Max','256GB','Rp 25.124.000'],['iPhone 17 Pro Max','512GB','Rp 30.115.000'],['iPhone 17 Pro Max','1TB','Rp 35.115.000'],['iPhone 17 Pro Max','2TB','Rp 43.615.000']
+const products=[
+['Ex iBox','iPhone 8 Plus','64GB','Rp 2.624.000'],['Ex iBox','iPhone 8 Plus','256GB','Rp 3.024.000'],['Ex iBox','iPhone X','64GB','Rp 3.115.000'],['Ex iBox','iPhone X','256GB','Rp 3.924.000'],['Ex iBox','iPhone XR','64GB','Rp 4.324.000'],['Ex iBox','iPhone XR','128GB','Rp 4.924.000'],['Ex iBox','iPhone XS Max','64GB','Rp 4.115.000'],['Ex iBox','iPhone XS Max','256GB','Rp 5.015.000'],
+['Ex iBox','iPhone 11','64GB','Rp 4.715.000'],['Ex iBox','iPhone 11','128GB','Rp 5.815.000'],['Ex iBox','iPhone 11 Pro','64GB','Rp 6.115.000'],['Ex iBox','iPhone 11 Pro','128GB','Rp 6.915.000'],['Ex iBox','iPhone 11 Pro Max','64GB','Rp 6.815.000'],['Ex iBox','iPhone 11 Pro Max','256GB','Rp 7.515.000'],
+['Ex iBox','iPhone 12 Mini','64GB','Rp 5.115.000'],['Ex iBox','iPhone 12 Mini','256GB','Rp 5.715.000'],['Ex iBox','iPhone 12','64GB','Rp 5.615.000'],['Ex iBox','iPhone 12','128GB','Rp 6.265.000'],['Ex iBox','iPhone 12 Pro','64GB','Rp 7.365.000'],['Ex iBox','iPhone 12 Pro','256GB','Rp 8.115.000'],['Ex iBox','iPhone 12 Pro Max','64GB','Rp 8.365.000'],['Ex iBox','iPhone 12 Pro Max','256GB','Rp 9.415.000'],['Ex iBox','iPhone 13','128GB','Rp 7.615.000'],['Ex iBox','iPhone 13','256GB','Rp 8.615.000'],
+['Ex iBox','iPhone 13 Pro','128GB','Rp 8.915.000'],['Ex iBox','iPhone 13 Pro','256GB','Rp 9.915.000'],['Ex iBox','iPhone 13 Pro Max','128GB','Rp 10.015.000'],['Ex iBox','iPhone 13 Pro Max','256GB','Rp 11.015.000'],['Ex iBox','iPhone 14','128GB','Rp 8.115.000'],['Ex iBox','iPhone 14','256GB','Rp 9.615.000'],['Ex iBox','iPhone 14 Plus','128GB','Rp 8.865.000'],['Ex iBox','iPhone 14 Plus','256GB','Rp 10.115.000'],['Ex iBox','iPhone 14 Pro','128GB','Rp 11.915.000'],['Ex iBox','iPhone 14 Pro','256GB','Rp 13.015.000'],['Ex iBox','iPhone 14 Pro Max','128GB','Rp 12.515.000'],['Ex iBox','iPhone 14 Pro Max','256GB','Rp 13.515.000'],
+['Ex iBox','iPhone 15','128GB','Rp 9.515.000'],['Ex iBox','iPhone 15','256GB','Rp 11.915.000'],['Ex iBox','iPhone 15 Plus','128GB','Rp 11.015.000'],['Ex iBox','iPhone 15 Plus','256GB','Rp 12.915.000'],['Ex iBox','iPhone 15 Pro','128GB','Rp 13.915.000'],['Ex iBox','iPhone 15 Pro','256GB','Rp 15.315.000'],['Ex iBox','iPhone 15 Pro Max','256GB','Rp 15.615.000'],['Ex iBox','iPhone 15 Pro Max','512GB','Rp 17.615.000'],['Ex iBox','iPhone 16','128GB','Rp 12.715.000'],['Ex iBox','iPhone 16','256GB','Rp 14.915.000'],['Ex iBox','iPhone 16 Plus','128GB','Rp 14.615.000'],['Ex iBox','iPhone 16 Plus','256GB','Rp 16.115.000'],
+['Ex Inter','iPhone XR','64GB','Rp 3.915.000'],['Ex Inter','iPhone XR','128GB','Rp 4.315.000'],['Ex Inter','iPhone 11','64GB','Rp 4.615.000'],['Ex Inter','iPhone 11','128GB','Rp 5.415.000'],['Ex Inter','iPhone 11 Pro','64GB','Rp 5.915.000'],['Ex Inter','iPhone 11 Pro','128GB','Rp 6.515.000'],['Ex Inter','iPhone 11 Pro Max','64GB','Rp 5.465.000'],['Ex Inter','iPhone 11 Pro Max','256GB','Rp 5.915.000'],['Ex Inter','iPhone 12 Mini','64GB','Rp 4.115.000'],['Ex Inter','iPhone 12 Mini','256GB','Rp 4.615.000'],['Ex Inter','iPhone 12','64GB','Rp 4.415.000'],['Ex Inter','iPhone 12','128GB','Rp 4.815.000'],['Ex Inter','iPhone 12 Pro','128GB','Rp 5.865.000'],['Ex Inter','iPhone 12 Pro','256GB','Rp 6.615.000'],['Ex Inter','iPhone 12 Pro Max','128GB','Rp 6.515.000'],['Ex Inter','iPhone 12 Pro Max','256GB','Rp 7.415.000'],['Ex Inter','iPhone 13','128GB','Rp 5.865.000'],['Ex Inter','iPhone 13','256GB','Rp 6.515.000'],['Ex Inter','iPhone 13 Pro','128GB','Rp 7.415.000'],['Ex Inter','iPhone 13 Pro','256GB','Rp 8.115.000'],['Ex Inter','iPhone 13 Pro Max','128GB','Rp 8.415.000'],['Ex Inter','iPhone 13 Pro Max','256GB','Rp 9.115.000'],['Ex Inter','iPhone 14','128GB','Rp 7.615.000'],['Ex Inter','iPhone 14','256GB','Rp 8.315.000'],['Ex Inter','iPhone 14 Plus','128GB','Rp 8.315.000'],['Ex Inter','iPhone 14 Plus','256GB','Rp 9.115.000'],['Ex Inter','iPhone 14 Pro','128GB','Rp 9.015.000'],['Ex Inter','iPhone 14 Pro','256GB','Rp 11.015.000'],['Ex Inter','iPhone 14 Pro Max','128GB','Rp 10.615.000'],['Ex Inter','iPhone 14 Pro Max','256GB','Rp 11.615.000'],
+['Bea Cukai','iPhone 12 Pro Max','64GB','Rp 8.115.000'],['Bea Cukai','iPhone 12 Pro Max','256GB','Rp 9.015.000'],['Bea Cukai','iPhone 13','128GB','Rp 6.915.000'],['Bea Cukai','iPhone 13','256GB','Rp 7.715.000'],['Bea Cukai','iPhone 13 Pro','128GB','Rp 8.915.000'],['Bea Cukai','iPhone 13 Pro','256GB','Rp 9.815.000'],['Bea Cukai','iPhone 13 Pro Max','128GB','Rp 9.965.000'],['Bea Cukai','iPhone 13 Pro Max','256GB','Rp 10.715.000'],['Bea Cukai','iPhone 14 Pro','128GB','Rp 11.415.000'],['Bea Cukai','iPhone 14 Pro','256GB','Rp 12.515.000'],
+['Brand New','iPhone 13','128GB','Rp 8.415.000'],['Brand New','iPhone 14','128GB','Rp 9.115.000'],['Brand New','iPhone 14','256GB','Rp 11.115.000'],['Brand New','iPhone 15','128GB','Rp 11.865.000'],['Brand New','iPhone 15','256GB','Rp 13.615.000'],['Brand New','iPhone 16','128GB','Rp 14.615.000'],['Brand New','iPhone 16','256GB','Rp 17.115.000'],['Brand New','iPhone 16','512GB','Rp 21.115.000'],['Brand New','iPhone 16 Pro','128GB','Rp 17.615.000'],['Brand New','iPhone 16 Pro','256GB','Rp 20.115.000'],['Brand New','iPhone 16 Pro','512GB','Rp 23.615.000'],['Brand New','iPhone 16 Pro','1TB','Rp 28.115.000'],['Brand New','iPhone 16 Pro Max','256GB','Rp 18.115.000'],['Brand New','iPhone 16 Pro Max','512GB','Rp 21.115.000'],['Brand New','iPhone 16 Pro Max','1TB','Rp 29.615.000'],['Brand New','iPhone 17','256GB','Rp 17.215.000'],['Brand New','iPhone 17','512GB','Rp 22.065.000'],['Brand New','iPhone 17 Pro','256GB','Rp 23.115.000'],['Brand New','iPhone 17 Pro','512GB','Rp 27.915.000'],['Brand New','iPhone 17 Pro','1TB','Rp 32.665.000'],['Brand New','iPhone 17 Pro Max','256GB','Rp 25.124.000'],['Brand New','iPhone 17 Pro Max','512GB','Rp 30.115.000'],['Brand New','iPhone 17 Pro Max','1TB','Rp 35.115.000'],['Brand New','iPhone 17 Pro Max','2TB','Rp 43.615.000']
 ];
-function nextImage(img) {
-  const list = (img.dataset.sources || '').split('|').filter(Boolean);
-  let i = Number(img.dataset.index || '0') + 1;
-  if (i < list.length) {
-    img.dataset.index = String(i);
-    img.src = list[i];
-  } else {
-    img.onerror = null;
-    img.src = fallbackImg;
-  }
-}
-const wrap = document.getElementById('products');
-wrap.innerHTML = items.map(([model,storage,price]) => {
-  const title = `${model} ${storage}`;
-  const sources = imageMap[model] || [fallbackImg];
-  const message = encodeURIComponent(`Halo Liks Mobile, saya mau tanya unit ${title} dengan harga ${price}. Apakah masih tersedia?`);
-  const waLink = `https://wa.me/${whatsappNumber}?text=${message}`;
-  return `<div class="product-card"><img src="${sources[0]}" data-sources="${sources.join('|')}" data-index="0" alt="${title}" loading="lazy" onerror="nextImage(this)"><h3>${title}</h3><p class="price">${price}</p><a href="${waLink}" target="_blank" rel="noopener">Tanya Unit Ini</a></div>`;
-}).join('');
+let selectedCat='Semua';
+function nextImage(img){const list=(img.dataset.sources||'').split('|').filter(Boolean);let i=Number(img.dataset.index||'0')+1;if(i<list.length){img.dataset.index=String(i);img.src=list[i]}else{img.onerror=null;img.src=fallbackImg}}
+function render(){const q=document.getElementById('searchInput').value.toLowerCase().trim();const filtered=products.filter(([cat,model,storage,price])=>(selectedCat==='Semua'||cat===selectedCat)&&(`${cat} ${model} ${storage} ${price}`.toLowerCase().includes(q)));const wrap=document.getElementById('products');if(!filtered.length){wrap.innerHTML='<p class="empty">Produk tidak ditemukan.</p>';return}wrap.innerHTML=filtered.map(([cat,model,storage,price])=>{const title=`${model} ${storage}`;const sources=imageMap[model]||[fallbackImg];const msg=encodeURIComponent(`Halo Liks Mobile, saya mau tanya unit ${title} (${cat}) dengan harga ${price}. Apakah masih tersedia?`);const wa=`https://wa.me/${whatsappNumber}?text=${msg}`;return `<div class="product-card"><span class="badge">${cat}</span><img src="${sources[0]}" data-sources="${sources.join('|')}" data-index="0" alt="${title}" loading="lazy" onerror="nextImage(this)"><h3>${title}</h3><p class="meta">${cat} • ${storage}</p><p class="price">${price}</p><a href="${wa}" target="_blank" rel="noopener">Tanya Unit Ini</a></div>`}).join('')}
+document.querySelectorAll('.toolbar button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.toolbar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selectedCat=btn.dataset.cat;render()}));
+document.getElementById('searchInput').addEventListener('input',render);render();
 </script>
 </body>
 </html>
