@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Ayaa 🤍</title>
+  <style>
+    :root {
+      --pink: #ff7eb6;
+      --soft-pink: #ffd1e5;
+      --cream: #fff7fb;
+      --purple: #8b5cf6;
+      --deep: #2d1b2f;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, #ffe1ef, transparent 35%),
+        radial-gradient(circle at bottom right, #eadcff, transparent 42%),
+        linear-gradient(135deg, #fff7fb, #ffe8f2);
+      color: var(--deep);
+      overflow-x: hidden;
+    }
+
+    .hearts span {
+      position: fixed;
+      bottom: -40px;
+      color: rgba(255, 126, 182, 0.52);
+      font-size: 24px;
+      animation: floatUp 8s linear infinite;
+      z-index: 0;
+    }
+
+    .hearts span:nth-child(1) { left: 7%; animation-delay: 0s; }
+    .hearts span:nth-child(2) { left: 20%; animation-delay: 2s; font-size: 18px; }
+    .hearts span:nth-child(3) { left: 40%; animation-delay: 4s; font-size: 30px; }
+    .hearts span:nth-child(4) { left: 63%; animation-delay: 1s; font-size: 20px; }
+    .hearts span:nth-child(5) { left: 80%; animation-delay: 3s; font-size: 28px; }
+    .hearts span:nth-child(6) { left: 92%; animation-delay: 5s; font-size: 16px; }
+    .hearts span:nth-child(7) { left: 51%; animation-delay: 6s; font-size: 22px; }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) rotate(0deg); opacity: 0; }
+      15% { opacity: 1; }
+      to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(940px, 92%);
+      margin: 0 auto;
+      padding: 42px 0 26px;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .card {
+      width: 100%;
+      padding: 44px 28px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 24px 70px rgba(255, 126, 182, 0.22);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.92);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--soft-pink);
+      color: #9d174d;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 9vw, 88px);
+      line-height: 0.95;
+      color: var(--pink);
+      margin-bottom: 18px;
+      text-shadow: 0 8px 26px rgba(255, 126, 182, 0.24);
+    }
+
+    h2 {
+      font-size: clamp(28px, 5vw, 44px);
+      margin-bottom: 18px;
+      color: #7c3aed;
+    }
+
+    p {
+      font-size: clamp(16px, 2.2vw, 20px);
+      line-height: 1.85;
+      margin: 0 auto;
+      max-width: 760px;
+    }
+
+    .name {
+      color: var(--purple);
+      font-weight: 900;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 15px 24px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: var(--white);
+      font-weight: 800;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 16px 36px rgba(139, 92, 246, 0.26);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 42px rgba(139, 92, 246, 0.34);
+    }
+
+    section {
+      margin: 34px 0;
+    }
+
+    .message,
+    .memory,
+    .closing {
+      padding: 34px 26px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 18px 50px rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      text-align: center;
+    }
+
+    .letter {
+      display: none;
+      margin-top: 24px;
+      padding: 26px;
+      border-radius: 24px;
+      background: #fff8fc;
+      border: 2px dashed #ff9ac7;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .letter.show {
+      display: block;
+    }
+
+    .quote {
+      font-weight: 700;
+      color: #9d174d;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .mini-card {
+      padding: 22px 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #fff, #fff0f7);
+      box-shadow: 0 12px 30px rgba(255, 126, 182, 0.14);
+    }
+
+    .mini-card .emoji {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .mini-card h3 {
+      margin-bottom: 8px;
+      color: #be185d;
+      font-size: 18px;
+    }
+
+    .mini-card p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 34px 0 8px;
+      font-weight: 800;
+      color: #9d174d;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 760px) {
+      main { padding: 26px 0; }
+      .card { padding: 34px 20px; }
+      .mini-grid { grid-template-columns: 1fr; }
+      .hero { min-height: 88vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" aria-hidden="true">
+    <span>♡</span><span>❤</span><span>♡</span><span>❤</span><span>♡</span><span>❤</span><span>♡</span>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="card">
+        <div class="badge">For my favorite person</div>
+        <h1>Happy Birthday,<br><span class="name">Ayaa</span>!</h1>
+        <p>
+          Hari ini harinya kamu, jadi website kecil ini aku buat khusus buat kamu.
+          Nggak mewah-mewah banget, tapi isinya tulus dari aku.
+        </p>
+        <button class="btn" onclick="showLetter()">Klik ini, baby ✨</button>
+
+        <div id="letter" class="letter">
+          <p class="quote">
+            Happy birthday Ayaa, I wish you'll get anything that you want, babyy.
+            I wish all the best for youu. Hihihi, nggak berasa kita udahh 2 birthday bareng, sayang.
+            Semogaa kita bisa bareng-bareng teruss. I hope you'll always be happy and healthy, babyy.
+            I love youu, babyy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="message">
+      <h2>Dear Ayaa</h2>
+      <p>
+        Happy birthday, sayang. Semoga semua hal yang kamu pengen pelan-pelan bisa kamu dapetin.
+        Semoga hidup kamu selalu dikasih banyak hal baik, banyak alasan buat senyum,
+        dan banyak hari yang bikin kamu ngerasa dicintai.
+      </p>
+    </section>
+
+    <section class="memory">
+      <h2>2 Birthday Bareng</h2>
+      <p>
+        Hihihi, nggak berasa ya kita udah ngelewatin 2 birthday bareng.
+        Dari semua waktu yang udah lewat, aku masih pengen kita terus bareng-bareng,
+        saling nemenin, saling jaga, dan tetap jadi tempat pulang satu sama lain.
+      </p>
+
+      <div class="mini-grid">
+        <div class="mini-card">
+          <div class="emoji">🎂</div>
+          <h3>For today</h3>
+          <p>Semoga hari ulang tahun kamu manis, hangat, dan penuh senyum kecil.</p>
+        </div>
+        <div class="mini-card">
+          <div class="emoji">✨</div>
+          <h3>For your dreams</h3>
+          <p>Semoga semua yang kamu mau bisa dateng satu-satu di waktu terbaik.</p>
+        </div>
+        <div class="mini-card">
+          <div class="emoji">🤍</div>
+          <h3>For us</h3>
+          <p>Semoga kita bisa terus bareng, makin kuat, dan makin sayang.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2>I love youu, babyy</h2>
+      <p>
+        I hope you'll always be happy and healthy, Ayaa.
+        Aku sayang kamu, dan aku bersyukur banget bisa ngerayain ulang tahun kamu lagi.
+        Selamat ulang tahun, baby. Tetap jadi Ayaa yang aku sayang.
+      </p>
+    </section>
+
+    <footer>
+      Dibuat khusus untuk Ayaa ♡
+    </footer>
+  </main>
+
+  <script>
+    function showLetter() {
+      const letter = document.getElementById("letter");
+      letter.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
