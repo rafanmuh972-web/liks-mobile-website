@@ -45,5 +45,6 @@ function render(){const q=document.getElementById('searchInput').value.toLowerCa
 document.querySelectorAll('.toolbar button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.toolbar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selectedCat=btn.dataset.cat;render()}));
 document.getElementById('searchInput').addEventListener('input',render);render();
 </script>
+<script src="js/chatbot.js"></script>
 </body>
 </html>
